@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CandidateProfile",
+  "type": "object",
+  "properties": {
+    "personalInformation": {
+      "type": "object",
+      "description": "Basic personal details of the candidate.",
+      "properties": {
+        "fullName": { "type": "string", "description": "Standard identification of the candidate." },
+        "emailAddress": { "type": "string", "format": "email", "description": "Essential for reaching out to candidates." },
+        "phoneNumber": { "type": "string", "description": "Mobile or direct lines." },
+        "location": { "type": "string", "description": "City/State, often used to check if the candidate is local or requires relocation." },
+        "linkedinOrPortfolioUrl": { "type": "string", "format": "uri", "description": "Professional social media or portfolio websites." }
+      },
+      "required": ["fullName", "emailAddress"]
+    },
+    "workExperience": {
+      "type": "array",
+      "description": "Professional history of the candidate.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "jobTitle": { "type": "string", "description": "Specific roles held (e.g., 'Senior Software Engineer')." },
+          "companyName": { "type": "string", "description": "Organizations where the candidate was employed." },
+          "datesOfEmployment": {
+            "type": "object",
+            "description": "Start and end dates of employment.",
+            "properties": {
+              "startDate": { "type": "string", "format": "date", "description": "Employment start date." },
+              "endDate": { "type": "string", "format": "date", "description": "Employment end date." }
+            }
+          },
+          "keyResponsibilities": { "type": "array", "items": { "type": "string" }, "description": "Bullet points outlining accomplishments." },
+          "quantifiedMetrics": { "type": "array", "items": { "type": "string" }, "description": "Percentages, dollar amounts, or numbers showing impact." }
+        },
+        "required": ["jobTitle", "companyName", "datesOfEmployment"]
+      }
+    },
+    "education": {
+      "type": "array",
+      "description": "Academic background of the candidate.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "degreeType": { "type": "string", "description": "Bachelor’s, Master’s, PhD." },
+          "majorFieldOfStudy": { "type": "string", "description": "Areas of academic specialization." },
+          "universityName": { "type": "string", "description": "Institution where the degree was obtained." },
+          "graduationYear": { "type": "integer", "description": "Year of graduation, often used to gauge seniority." },
+          "relevantCourseworkOrProjects": { "type": "array", "items": { "type": "string" }, "description": "Details for recent graduates or specialized roles." }
+        },
+        "required": ["degreeType", "universityName"]
+      }
+    },
+    "skills": {
+      "type": "object",
+      "description": "Technical and soft skills of the candidate.",
+      "properties": {
+        "hardSkills": { "type": "array", "items": { "type": "string" }, "description": "Specific software, tools, languages, or specialized machinery (e.g., Python, AWS, Agile)." },
+        "softSkills": { "type": "array", "items": { "type": "string" }, "description": "Interpersonal and professional skills (e.g., Leadership, Communication)." },
+        "certifications": { "type": "array", "items": { "type": "string" }, "description": "Valid credentials required for specialized roles (e.g., CPA, PMP, RN)." }
+      }
+    },
+    "otherAttributes": {
+      "type": "object",
+      "description": "Additional important attributes of the candidate.",
+      "properties": {
+        "languagesKnown": { "type": "array", "items": { "type": "string" }, "description": "Language proficiency levels, essential for global roles." },
+        "professionalSummary": { "type": "string", "description": "Brief paragraph highlighting qualifications." },
+        "awardsAndPublications": { "type": "array", "items": { "type": "string" }, "description": "Special recognitions and industry contributions." }
+      }
+    }
+  },
+  "required": ["personalInformation"]
+}
