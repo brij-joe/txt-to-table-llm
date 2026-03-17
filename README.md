@@ -5,6 +5,30 @@ The example implementation focuses on resume/profile parsing, extracting key can
 
 This prototype leverages Google Gemini, a cutting-edge LLM designed for natural language understanding and generation. Gemini is integrated to power AI agents, enabling advanced reasoning, conversational capabilities, and decision-making for data extraction tasks.
 
+## 🔄 Architecture Flow Diagram
+Here’s a simple conceptual flow:
+```
+[ Unstructured Document ]
+          │
+          ▼
+ [ Document Loader ]
+          │
+          ▼
+ [ Preprocessing / Chunking ]
+          │
+          ▼
+ [ Gemini LLM Extraction ]
+          │
+          ▼
+ [ JSON Schema Validation (Pydantic) ]
+          │
+          ▼
+ [ Tabular Conversion (Pandas) ]
+          │
+          ▼
+ [ CSV / Excel / Database ]
+```
+
 ## 🚀 Features
 Parse unstructured text (e.g., resumes, profiles).
 
